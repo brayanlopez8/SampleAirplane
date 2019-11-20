@@ -8,6 +8,7 @@ using Audit.EntityFramework;
 using VuelosApp.Contexto.DAL.Migrations;
 using Microsoft.Extensions.Configuration;
 using Audit.Core;
+using VuelosApp.Entidades;
 
 namespace VuelosApp.Contexto
 {
@@ -16,8 +17,9 @@ namespace VuelosApp.Contexto
         private IConfiguration configuration { get; set; }
         public Contexto(DbContextOptions<Contexto> options, IConfiguration configuration) : base(options)
         {
-            DbInicializar.Initialize(this);
             this.configuration = configuration;
+            DbInicializar.Initialize(this);
+           
             AuditEventType = "{database}_{context}";
             Mode = AuditOptionMode.OptOut;
             IncludeEntityObjects = false;
@@ -36,8 +38,11 @@ namespace VuelosApp.Contexto
 
 
 
-        //public DbSet<Person> Person { get; set; }
-        //public DbSet<Country> Country { get; set; }
+        public DbSet<VueloEnt> VueloEnt { get; set; }
+        public DbSet<AvionesEnt> AvionesEnt { get; set; }
+        public DbSet<PasajerosEnt> PasajerosEnt { get; set; }
+        public DbSet<SillasEnt> SillasEnt { get; set; }
+        public DbSet<VuelosPorPasajeroEnt> VuelosPorPasajeroEnt { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder
            .UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
