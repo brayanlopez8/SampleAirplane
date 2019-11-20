@@ -21,8 +21,7 @@
 
 
   <ItemGroup>
-    <Folder Include="Controller\Pasajeros\" />
-    <Folder Include="Controller\Sillas\" />
+    <Folder Include="Controladores\Pasajeros\" />
   </ItemGroup>
 
 </Project>
