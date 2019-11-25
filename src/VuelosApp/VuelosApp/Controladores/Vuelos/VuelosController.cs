@@ -29,7 +29,7 @@ namespace VuelosApp.Vuelos
         }
 
         // GET: api/Sillas/5
-        [HttpGet]
+        [HttpGet("{id}")]
         public VueloEnt Get(int id)
         {
             return UnitOfWork.VueloEntRepository.FindById(id);

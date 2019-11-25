@@ -19,7 +19,7 @@ namespace VuelosApp.Sillas
         }
 
         // GET: api/Sillas/5
-        [HttpGet]
+        [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
