@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VuelosApp.Contexto;
+using VuelosApp;
 
 namespace VuelosApp.Migrations
 {
-    [DbContext(typeof(Contexto.Contexto))]
+    [DbContext(typeof(Contexto))]
     partial class ContextoModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -61,15 +61,9 @@ namespace VuelosApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AvionesEntId");
-
-                    b.Property<int>("IdAvion");
-
                     b.Property<int>("NumeroSilla");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AvionesEntId");
 
                     b.ToTable("SillasEnt");
                 });
@@ -80,7 +74,11 @@ namespace VuelosApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Destino");
+
                     b.Property<DateTime>("FechaVuelo");
+
+                    b.Property<string>("Origen");
 
                     b.HasKey("Id");
 
@@ -99,9 +97,13 @@ namespace VuelosApp.Migrations
 
                     b.Property<int>("IdAvion");
 
+                    b.Property<int>("IdPasajero");
+
                     b.Property<int>("IdSilla");
 
                     b.Property<int>("IdVuelo");
+
+                    b.Property<int?>("PasajerosEntId");
 
                     b.Property<int?>("SillasEntId");
 
@@ -110,6 +112,8 @@ namespace VuelosApp.Migrations
                     b.Property<int?>("VuelosEntId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PasajerosEntId");
 
                     b.HasIndex("SillasEntId");
 
@@ -120,15 +124,12 @@ namespace VuelosApp.Migrations
                     b.ToTable("VuelosPorPasajeroEnt");
                 });
 
-            modelBuilder.Entity("VuelosApp.Entidades.SillasEnt", b =>
-                {
-                    b.HasOne("VuelosApp.Entidades.AvionesEnt", "AvionesEnt")
-                        .WithMany()
-                        .HasForeignKey("AvionesEntId");
-                });
-
             modelBuilder.Entity("VuelosApp.Entidades.VuelosPorPasajeroEnt", b =>
                 {
+                    b.HasOne("VuelosApp.Entidades.PasajerosEnt", "PasajerosEnt")
+                        .WithMany()
+                        .HasForeignKey("PasajerosEntId");
+
                     b.HasOne("VuelosApp.Entidades.SillasEnt", "SillasEnt")
                         .WithMany()
                         .HasForeignKey("SillasEntId");

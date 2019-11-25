@@ -1,5 +1,4 @@
 ﻿const userAction = async (urlPath, myBody, method) => {
-    debugger;
     if (myBody == "") {
         myBody = undefined;
     }
@@ -11,5 +10,6 @@
         }
     });
     const myJson = await response.json(); //extract JSON from the http response
+    return myJson;
     // do something with myJson
 };

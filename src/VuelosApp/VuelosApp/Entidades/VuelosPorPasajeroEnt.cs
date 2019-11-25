@@ -15,6 +15,10 @@ namespace VuelosApp.Entidades
         public int IdVuelo { get; set; }
         public virtual VueloEnt VueloEnt { get; set; }
 
+        public int IdPasajero { get; set; }
+
+        public virtual PasajerosEnt PasajerosEnt { get; set; }
+
         public DateTime FechaCompra { get; set; }
         public DateTime FechaAsignacionSilla { get; set; }
 

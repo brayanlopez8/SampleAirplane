@@ -9,9 +9,6 @@ namespace VuelosApp.Entidades
     {
         public int NumeroSilla { get; set; }
 
-        public int IdAvion { get; set; }
-
-        public virtual AvionesEnt AvionesEnt { get; set; }
 
     }
 }

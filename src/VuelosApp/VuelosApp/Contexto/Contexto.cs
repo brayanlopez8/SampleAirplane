@@ -5,12 +5,12 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Audit.EntityFramework;
-using VuelosApp.Contexto.DAL.Migrations;
+using VuelosApp.DAL.Migrations;
 using Microsoft.Extensions.Configuration;
 using Audit.Core;
 using VuelosApp.Entidades;
 
-namespace VuelosApp.Contexto
+namespace VuelosApp
 {
     public sealed class Contexto : AuditDbContext
     {

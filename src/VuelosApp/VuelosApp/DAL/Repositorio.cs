@@ -10,9 +10,9 @@ namespace VuelosApp.DAL
 {
     public class Repositorio<T> : IRepositorio<T> where T: DefectoEnt, new()
     {
-        internal Contexto.Contexto context;
+        internal Contexto context;
         internal DbSet<T> dbSet;
-        public Repositorio(Contexto.Contexto context)
+        public Repositorio(Contexto context)
         {
             this.context = context;
             this.dbSet = context.Set<T>();

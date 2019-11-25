@@ -2,7 +2,7 @@
 using Audit.SqlServer.Providers;
 using Microsoft.Extensions.Configuration;
 
-namespace VuelosApp.Contexto
+namespace VuelosApp
 {
     public class AuditProvider : SqlDataProvider
     {

@@ -40,37 +40,31 @@ namespace VuelosApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VueloEnt",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    FechaVuelo = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_VueloEnt", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "SillasEnt",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    NumeroSilla = table.Column<int>(nullable: false),
-                    IdAvion = table.Column<int>(nullable: false),
-                    AvionesEntId = table.Column<int>(nullable: true)
+                    NumeroSilla = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SillasEnt", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_SillasEnt_AvionesEnt_AvionesEntId",
-                        column: x => x.AvionesEntId,
-                        principalTable: "AvionesEnt",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VueloEnt",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FechaVuelo = table.Column<DateTime>(nullable: false),
+                    Origen = table.Column<string>(nullable: true),
+                    Destino = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VueloEnt", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -85,12 +79,20 @@ namespace VuelosApp.Migrations
                     SillasEntId = table.Column<int>(nullable: true),
                     IdVuelo = table.Column<int>(nullable: false),
                     VueloEntId = table.Column<int>(nullable: true),
+                    IdPasajero = table.Column<int>(nullable: false),
+                    PasajerosEntId = table.Column<int>(nullable: true),
                     FechaCompra = table.Column<DateTime>(nullable: false),
                     FechaAsignacionSilla = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_VuelosPorPasajeroEnt", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_VuelosPorPasajeroEnt_PasajerosEnt_PasajerosEntId",
+                        column: x => x.PasajerosEntId,
+                        principalTable: "PasajerosEnt",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_VuelosPorPasajeroEnt_SillasEnt_SillasEntId",
                         column: x => x.SillasEntId,
@@ -112,9 +114,9 @@ namespace VuelosApp.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_SillasEnt_AvionesEntId",
-                table: "SillasEnt",
-                column: "AvionesEntId");
+                name: "IX_VuelosPorPasajeroEnt_PasajerosEntId",
+                table: "VuelosPorPasajeroEnt",
+                column: "PasajerosEntId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_VuelosPorPasajeroEnt_SillasEntId",
@@ -135,10 +137,10 @@ namespace VuelosApp.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "PasajerosEnt");
+                name: "VuelosPorPasajeroEnt");
 
             migrationBuilder.DropTable(
-                name: "VuelosPorPasajeroEnt");
+                name: "PasajerosEnt");
 
             migrationBuilder.DropTable(
                 name: "SillasEnt");

@@ -9,11 +9,11 @@ namespace VuelosApp.DAL.UnitOfWork
     public class UnitOfWork : IDisposable
     {
         private IConfiguration configuration { get; }
-        private Contexto.Contexto context;
+        private Contexto context;
         public UnitOfWork(IConfiguration configuration)
         {
             this.configuration = configuration;
-            context = new Contexto.Contexto(configuration);
+            context = new Contexto(configuration);
         }
          
         private bool disposed = false;

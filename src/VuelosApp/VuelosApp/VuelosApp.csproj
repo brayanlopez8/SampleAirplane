@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <Folder Include="Controladores\Pasajeros\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 

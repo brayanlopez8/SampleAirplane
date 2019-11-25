@@ -9,5 +9,8 @@ namespace VuelosApp.Entidades
     {
         public DateTime FechaVuelo { get; set; }
 
+        public string Origen { get; set; }
+        public string Destino { get; set; }
+
     }
 }
