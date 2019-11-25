@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace VuelosApp.Sillas
 {
-    [Route("api/[controller]")]
+    [Route("api/sillas")]
     [ApiController]
     public class SillasController : ControllerBase
     {
@@ -19,7 +19,7 @@ namespace VuelosApp.Sillas
         }
 
         // GET: api/Sillas/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet]
         public string Get(int id)
         {
             return "value";

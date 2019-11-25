@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VuelosApp</name>
+    </assembly>
+    <members>
+        <member name="M:VuelosApp.DAL.BulkOperation.Operation.BulkInsert``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Insert parent child(if exist) in database using SQL bulk copy 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="parentTableName"></param>
+        </member>
+        <member name="M:VuelosApp.DAL.BulkOperation.Operation.BulkInsert``1(System.Collections.Generic.IEnumerable{``0},System.String,System.Int32)">
+            <summary>
+            Insert parent child(if exist) in database using SQL bulk copy with batch parameters
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="list"></param>
+            <param name="parentTableName"></param>
+            <param name="batchSize"></param>
+        </member>
+        <member name="M:VuelosApp.DAL.BulkOperation.Operation.DeleteEntity``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            deletes data for given table data
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="dataList"></param>
+            <param name="tableName"></param>
+        </member>
+    </members>
+</doc>

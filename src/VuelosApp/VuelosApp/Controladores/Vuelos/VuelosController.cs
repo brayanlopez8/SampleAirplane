@@ -10,7 +10,7 @@ using VuelosApp.Entidades;
 
 namespace VuelosApp.Vuelos
 {
-    [Route("api/[controller]")]
+    [Route("api/vuelos")]
     [ApiController]
     public class VuelosController : ControllerBase
     {
@@ -29,7 +29,7 @@ namespace VuelosApp.Vuelos
         }
 
         // GET: api/Sillas/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet]
         public VueloEnt Get(int id)
         {
             return UnitOfWork.VueloEntRepository.FindById(id);
